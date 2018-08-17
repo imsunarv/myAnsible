@@ -1,0 +1,28 @@
+---
+
+-
+
+  hosts: all
+  
+  tasks:
+  
+    - name: Grouping Hosts based on distribution
+      group_by:
+        key: "custom_{{ ansible_distribution | lower }}"
+
+-
+
+  hosts: custom_centos
+
+  tasks:
+
+    - name: Pinging custom groups
+      ping:
+      when: ansible_hostname == "cent3"
+
+
+
+
+
+
+...

@@ -1,0 +1,16 @@
+---
+
+-
+ 
+
+  hosts: cent1
+
+
+
+  tasks:
+  
+    - name: "Testing extravars"
+      debug:
+        msg: "{{ extra_vars_key }}"
+
+...

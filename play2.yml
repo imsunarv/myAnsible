@@ -1,0 +1,15 @@
+---
+
+-
+
+  hosts: cent3
+
+  tasks:
+  
+    - name: Play 2 - Task 1
+      debug:
+        msg: Play 2 - Task 1
+
+
+    - include_tasks: play2task2.yml
+...

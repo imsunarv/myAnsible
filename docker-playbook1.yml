@@ -1,0 +1,45 @@
+---
+
+- name: Docker Containers
+
+  hosts: cent3
+
+  tasks:
+    
+    - name: Pull rastasheep's ubuntu-sshd image
+      docker_image:
+        name: rastasheep/ubuntu-sshd
+
+
+    - name: Running container
+      docker_container:
+        name: sshdserver
+        image: rastasheep/ubuntu-sshd
+        ports:
+          - "2222:22"
+        command: /usr/sbin/sshd -D
+
+    - name: Adding a Host
+      add_host:
+        hostname: docker-container
+        ansible_host: 192.168.10.45
+        ansible_port: 2222
+        ansible_user: root
+        ansible_password: root
+
+- 
+
+  hosts: docker-container
+
+  roles:
+    awesomeweb
+
+-
+
+  hosts: cent3
+
+  tasks:
+    - name: Create an image from existing container
+      command: "docker commit -c 'CMD[\"nginx\",\"-g\", \"daemon off;\"]' sshdserver ansible:awesomeweb:latest" 
+     
+...

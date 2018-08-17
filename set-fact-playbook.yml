@@ -1,0 +1,23 @@
+---
+
+- 
+
+  hosts: cent3
+
+
+  tasks:
+    - name: Setting installation variables for centOS
+      set_fact:
+        webserver_application_port: 80
+        webserver_application_path: /usr/share/www
+        webserver_application_user: root
+      when: ansible_distribution == 'CentOS'
+
+    - name: Show installation variables
+      debug:
+        msg: "webserver port - {{ webserver_application_port }} application path - {{ webserver_application_path }} user - {{ webserver_application_user }} " 
+
+    
+
+
+...

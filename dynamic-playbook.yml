@@ -1,0 +1,20 @@
+---
+
+-
+  hosts: ubu3,cent3
+
+
+  tasks:
+
+    - name: Add dynamic hostrule
+      command: "/usr/local/bin/hostsman -i dynamic_{{ ansible_hostname }}:{{ ansible_default_ipv4.address }}"
+      delegate_to: dnsmasq
+
+    - name: reload dnsmasq
+      service:
+        name: dnsmasq
+        state: reloaded
+      delegate_to: dnsmasq
+      run_once: true
+...
+

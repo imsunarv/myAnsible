@@ -1,0 +1,14 @@
+---
+
+-
+
+  hosts: cent3
+
+  tasks:
+    - name: Display Ip Address
+      debug:
+        var: "{{ansible_enp0s8.ipv4.address}}"
+
+
+
+...

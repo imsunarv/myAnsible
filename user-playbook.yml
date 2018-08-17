@@ -1,0 +1,28 @@
+---
+
+-
+
+
+  hosts: cent3,ubu3
+
+  tasks:
+
+    - name: Creating user
+      user:
+        name: "{{ item.key }}"
+        comment: "{{ item.value.full_name }}"
+      with_dict:
+        mallrev:
+          full_name: "Mallarapu Revanth"
+
+    - name: Adding the key to autorized_hosts
+      authorized_key:
+        user: mallrev
+        key: "{{ item }}"
+      with_file:
+        - /root/.ssh/id_rsa.pub
+
+
+
+
+...

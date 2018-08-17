@@ -1,0 +1,30 @@
+---
+
+-
+ 
+  hosts: cent3,ubu3
+
+
+  tasks:
+ 
+    - name: Changing the motd
+      copy:
+        content: "Welcome to {{ item }} Linux , Ansible Rocks"
+        dest: /etc/motd
+      notify: MOTD Changed
+      with_items:
+        - "CentOS"
+        - "Ubuntu"
+      when: ansible_distribution == item
+
+
+  handlers:
+
+    - name: MOTD Changed
+      debug:
+        msg: "MOTD has been changed"
+    
+
+
+
+...

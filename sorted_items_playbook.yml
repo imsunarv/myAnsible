@@ -1,0 +1,24 @@
+---
+
+-
+
+  hosts: cent3
+
+  tasks:
+    - name: loop thorugh list
+      debug:
+        msg: "An item: {{ item }}"
+      with_sorted_items:
+        - 3
+        - 2
+        - 6
+        - 1
+        - Z
+        - A
+        - M
+
+
+
+
+
+...

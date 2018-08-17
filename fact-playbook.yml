@@ -1,0 +1,35 @@
+---
+
+-
+
+  hosts: all
+  
+  tasks:
+
+    - name: "Creating facts.d on host"
+      file:
+        path: /etc/ansible/facts.d
+        recurse: yes
+        state: directory
+
+    - name: "Copying Custom Facts to Host"
+      copy:
+        src: /etc/ansible/facts.d/getdate1.fact
+        dest: /etc/ansible/facts.d/getdate1.fact
+        mode: 0755
+
+    - name: "Refreshing Facts"
+      setup:
+
+    - name: "Displaying IP of Host"
+      debug:
+        msg: "{{ ansible_default_ipv4.address }}"
+    
+    - name: "Displaying Custom Fact"
+      debug:
+        msg: "{{ ansible_local.getdate1.date.date }}"
+
+    - name: "Using hostvars"
+      debug:
+        msg: "{{ hostvars[ansible_hostname].ansible_local.getdate1.date.date }}"
+...

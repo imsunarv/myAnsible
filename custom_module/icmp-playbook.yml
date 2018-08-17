@@ -1,0 +1,17 @@
+---
+
+-
+
+  hosts: cent3
+
+  tasks:
+
+    - name: Test ICMP model
+      icmp:
+        target: 127.0.0.1
+
+
+
+
+
+...

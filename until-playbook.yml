@@ -1,0 +1,21 @@
+---
+
+-
+
+  hosts: ubu3,cent3
+
+
+  tasks:
+
+    - name: executing scripts
+      script: random.sh
+      register: result
+      retries: 100
+      until: result.stdout.find("10") != -1
+
+
+
+
+
+
+...

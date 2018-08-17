@@ -1,0 +1,37 @@
+---
+
+-
+ 
+  hosts: linux
+  user: root
+  gather_facts: true
+
+  vars:
+    motd_c: "Welcome to CentOS Linux - Ansible Rocks \n"
+    motd_u: "Welcome to Ubuntu Linux - Ansible Rocks \n"
+
+  tasks:
+    
+    - name: "Setting the MOTD"
+      copy: 
+        content: "{{ motd_c }}"
+        dest: /etc/motd
+      notify: MOTD Setup
+      when: ansible_distribution == "CentOS"
+   
+    - name: "Setting the MOTD"
+      copy:
+        content: "{{ motd_u }}"
+        dest: /etc/motd
+      notify: MOTD Setup
+      when: ansible_distribution == "Ubuntu"
+
+  handlers:
+
+    - name: "MOTD Setup"
+      debug:
+        msg: "MOTD was changed"      
+
+
+
+...

@@ -1,0 +1,17 @@
+---
+
+- 
+
+  hosts: cent3
+
+  tasks:
+
+    - name: Fetch redhat release file
+      fetch:
+        src: /etc/redhat-release
+        dest: /tmp/redhat-release
+
+
+
+
+...

@@ -1,0 +1,32 @@
+---
+
+-
+
+  hosts: cent3,ubuc
+
+
+  tasks:
+
+    - name: creating user
+      user:
+        name: "{{ item.key }}"
+        comment: "{{ item.value.full_name }}"
+      with_dict:
+        mallrev:
+          full_name: "Mallarapu Revanth"
+
+
+    - name: Creating directories with sequence
+      file: 
+        path: "/home/mallrev/{{ item }}"
+        state: directory
+      with_random_choice:
+        - "google"
+        - "apple"
+        - "nokia"
+
+
+
+
+
+...

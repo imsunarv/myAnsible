@@ -1,0 +1,17 @@
+---
+
+-
+
+  hosts: ubuc
+
+  tasks:
+ 
+    - name: Asemble conf.d to sshd_config
+      assemble:
+        src: conf.d
+        dest: sshd_config
+
+
+
+
+...

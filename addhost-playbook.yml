@@ -1,0 +1,28 @@
+---
+
+- 
+
+  hosts: cent3
+
+  tasks:
+
+    - name: add cent1 to new group
+      add_host:
+        name: cent3
+        groups: adhocgroup1,adhocgroup2
+
+
+
+
+-
+
+  hosts: adhocgroup1
+
+  tasks:
+    - name: Pinging adhoc group
+      ping:
+
+
+
+
+...

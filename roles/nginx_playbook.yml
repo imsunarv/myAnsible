@@ -1,0 +1,14 @@
+---
+
+-
+
+  hosts: cent3
+
+  roles:
+    - nginx
+    - { role: awesomeweb, target_dir: /tmp }
+
+
+
+
+...

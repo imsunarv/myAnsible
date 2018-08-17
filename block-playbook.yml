@@ -1,0 +1,25 @@
+---
+
+-
+
+  hosts: cent3,ubu3
+  
+
+  tasks:
+
+    - name: Block of tasks
+      block:
+        - debug:
+            msg: ex1
+ 
+        
+        - debug:
+            msg: ex2
+
+        - debug:
+            msg: ex3
+
+
+
+
+...

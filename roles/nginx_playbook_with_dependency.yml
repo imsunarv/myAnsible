@@ -1,0 +1,13 @@
+---
+
+-
+
+  hosts: cent3
+
+  roles:
+    - awesomeweb
+
+
+
+
+...
